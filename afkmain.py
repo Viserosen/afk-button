@@ -17,7 +17,8 @@ root.geometry("320x240")
 root.title("AFK SYSTEM")
 
 def is_program_running(programName):
-    
+    if programName == "":
+        return True
     for process in psutil.process_iter(['name']):
         if process.info['name'] and programName in process.info['name'].lower():
             return True
