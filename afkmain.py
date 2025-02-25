@@ -33,7 +33,7 @@ def afk():
             afk_stop()
             break
         index = random.randint(0, 3)
-        press_time = random.random() * 1.5
+        press_time = random.random() * 0.1
         interval_time = random.random() * 5
         time.sleep(interval_time)
         #print(f"Interval: {interval_time}s | Key: {wsad[index]} | Press: {press_time}s")
@@ -75,3 +75,5 @@ TextBox.grid(row = 3, column=1)
 TextBox.insert(tk.END, "")
 
 root.mainloop()
+
+#zapis ostatnio wpisanego
