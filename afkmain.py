@@ -72,6 +72,6 @@ StartButton.grid(row = 1, column= 1)
 targetLabel.grid(row = 2, column= 1)
 TextBox.grid(row = 3, column=1)
 
-TextBox.insert(tk.END, "notepad.exe")
+TextBox.insert(tk.END, "")
 
 root.mainloop()
