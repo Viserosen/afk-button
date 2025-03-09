@@ -1,9 +1,10 @@
 import tkinter as tk
-from pynput.keyboard import Key, Controller
 import time
 import random
 import threading
 import psutil
+from pynput.keyboard import Key, Controller
+from pathlib import Path
 
 buttonText = ["off","on"]
 buttonColor = ["#ff0000","#00ff00"]
@@ -28,6 +29,12 @@ def afk():
     global running
     wsad = "wsad"
     programName = TextBox.get("1.0", "end-1c")
+
+    #save program name to file
+    file = open("save.txt", "w")
+    file.write(programName)
+    file.close()
+
     while running:
         if(not is_program_running(programName)):
             afk_stop()
@@ -72,8 +79,15 @@ StartButton.grid(row = 1, column= 1)
 targetLabel.grid(row = 2, column= 1)
 TextBox.grid(row = 3, column=1)
 
+#check if there is a saved target
+saved_target = ""
+if Path("save.txt").is_file():
+    file = open("save.txt", "r")
+    saved_target = file.read()
+else:
+    file = open("save.txt","w")
+file.close()
+
 TextBox.insert(tk.END, "")
 
 root.mainloop()
-
-#zapis ostatnio wpisanego
