@@ -14,6 +14,8 @@ keyboard = Controller()
 
 root = tk.Tk()
 
+var1 = tk.IntVar()
+
 root.geometry("320x240")
 root.title("AFK SYSTEM")
 
@@ -65,22 +67,33 @@ def button_click():
         thread1 = threading.Thread(target=afk, daemon=True)
         thread1.start()
 
+def switch_block_of_text_box():
+    if not var1.get():
+        TextBox.config(state=tk.DISABLED)
+    else:
+        TextBox.config(state=tk.NORMAL)
+
 root.columnconfigure(0, weight=1)
 root.columnconfigure(1, weight=1)
 root.columnconfigure(2, weight=1)
+root.columnconfigure(3, weight=1)
+root.columnconfigure(4, weight=1)
 
 afkLabel = tk.Label(root, text="AFK")
 targetLabel = tk.Label(root, text="Target:")
 StartButton = tk.Button(root, text=buttonText[buttonState], command=button_click, fg=buttonColor[buttonState],padx = 100, pady = 50)
-TextBox = tk.Text(root)
+TextBox = tk.Text(root,state=tk.DISABLED)
+checkBox = tk.Checkbutton(root, text="block textBox",variable=var1, onvalue=0, offvalue=1, command=switch_block_of_text_box)
 
 afkLabel.grid(row = 0, column= 1)
 StartButton.grid(row = 1, column= 1)
 targetLabel.grid(row = 2, column= 1)
-TextBox.grid(row = 3, column=1)
+checkBox.grid(row = 3, column=1)
+TextBox.grid(row = 4, column=1)
+
 
 #check if there is a saved target
-saved_target = ""
+saved_target = "debil"
 if Path("save.txt").is_file():
     file = open("save.txt", "r")
     saved_target = file.read()
@@ -88,6 +101,6 @@ else:
     file = open("save.txt","w")
 file.close()
 
-TextBox.insert(tk.END, "")
+TextBox.insert(tk.END, saved_target)
 
 root.mainloop()
