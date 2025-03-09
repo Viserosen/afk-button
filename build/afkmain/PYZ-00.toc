@@ -1,4 +1,4 @@
-('C:\\Users\\dymit\\Documents\\coding\\pytong\\afkskrypt\\build\\afkmain\\PYZ-00.pyz',
+('C:\\Users\\dymit\\Documents\\GitHub\\afk-button\\build\\afkmain\\PYZ-00.pyz',
  [('__future__',
    'C:\\Users\\dymit\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\__future__.py',
    'PYMODULE'),
