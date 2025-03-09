@@ -82,7 +82,7 @@ root.columnconfigure(4, weight=1)
 afkLabel = tk.Label(root, text="AFK")
 targetLabel = tk.Label(root, text="Target:")
 StartButton = tk.Button(root, text=buttonText[buttonState], command=button_click, fg=buttonColor[buttonState],padx = 100, pady = 50)
-TextBox = tk.Text(root,state=tk.DISABLED)
+TextBox = tk.Text(root)
 checkBox = tk.Checkbutton(root, text="block textBox",variable=var1, onvalue=0, offvalue=1, command=switch_block_of_text_box)
 
 afkLabel.grid(row = 0, column= 1)
@@ -102,5 +102,6 @@ else:
 file.close()
 
 TextBox.insert(tk.END, saved_target)
+TextBox.config(state=tk.DISABLED)
 
 root.mainloop()
